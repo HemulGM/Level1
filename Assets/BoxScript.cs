@@ -54,7 +54,7 @@ public class BoxScript : MonoBehaviour {
 		}
 		Cat = new GameObject ("Cat");
 		Instantiate(Cat);
-		Cat.AddComponent<SpriteRenderer>().sprite = "кот3";
+		Cat.AddComponent<SpriteRenderer>();
 		Cat.SetActive (true);
 		Close ();
 	}

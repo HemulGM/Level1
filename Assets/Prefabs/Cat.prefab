@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4876835899831594}
   - component: {fileID: 212574042184123246}
   m_Layer: 0
-  m_Name: "\u043A\u043E\u0442"
+  m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
