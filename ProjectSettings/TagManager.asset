@@ -6,6 +6,19 @@ TagManager:
   tags:
   - Cat1
   - Cat2
+  - Step1
+  - Step2
+  - Plus
+  - BStep1
+  - BStep2
+  - BStep3
+  - BStep4
+  - BStep5
+  - BStep6
+  - BStep7
+  - BStep8
+  - Start
+  - GameOver
   layers:
   - Default
   - TransparentFX
