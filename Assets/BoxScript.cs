@@ -12,6 +12,7 @@ public class BoxScript : MonoBehaviour {
 	int TimeClose = AnimateTime;
 	bool DoTerminate = false;
 	int TimeTerminate = AnimateTime;
+	bool NowTutorial = false;
 
 	void ForceClose()
 	{
@@ -23,7 +24,9 @@ public class BoxScript : MonoBehaviour {
 	void ForceTerminate(){
 		Destroy (cat);
 		Destroy (gameObject);
-		TutorialEnd ();
+		if (NowTutorial) {
+			TutorialEnd ();
+		};
 	}
 
 	public void OnMouseDown(){
@@ -43,7 +46,9 @@ public class BoxScript : MonoBehaviour {
 		cat.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y+1.0f, gameObject.transform.position.z);
 		cat.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 		Cats.cats.SelectBox (this);
-		Tutorial();
+		if (NowTutorial) {
+			TutorialStep ();
+		}
 		TimeClose = AnimateTime;
 	}
 
@@ -77,7 +82,13 @@ public class BoxScript : MonoBehaviour {
 		}
 	}
 
-	void Tutorial(){
+	void TutorialStart(){
+		if (gameObject.tag == "BStep1") {
+			GameObject.FindGameObjectWithTag ("Step1").GetComponent<Step> ().SetTo (GameObject.FindGameObjectWithTag ("BStep1"));
+		}
+	}
+
+	void TutorialStep(){
 		switch (gameObject.tag)
 		{
 		case "BStep1":
@@ -150,8 +161,12 @@ public class BoxScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		System.Random rand = new System.Random (344535);
-		//CatType = Random.Range (1, 3);
+		//System.Random rand = new System.Random (344535);
+		if (!NowTutorial) {
+			CatType = Random.Range (1, 3);
+		} else {
+			TutorialStart ();
+		}
 		if (Cats.cats == null) {
 			Cats.cats = new Cats ();
 		}
@@ -162,7 +177,7 @@ public class BoxScript : MonoBehaviour {
 		cat.transform.localScale = new Vector3 (0.5f, 0.35f, 0.5f);
 	}
 	
-	// Update is called once per frame
+	// Update is called once per framera
 	void Update () {
 		if (DoClose) {
 			TimeClose -= 1;
