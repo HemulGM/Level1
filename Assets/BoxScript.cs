@@ -12,7 +12,7 @@ public class BoxScript : MonoBehaviour {
 	int TimeClose = AnimateTime;
 	bool DoTerminate = false;
 	int TimeTerminate = AnimateTime;
-	bool NowTutorial = false;
+	bool NowTutorial = true;
 
 	void ForceClose()
 	{
